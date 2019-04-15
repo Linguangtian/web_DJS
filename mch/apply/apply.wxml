@@ -80,11 +80,10 @@
                     </picker>
                 </view>
                 <view class="flex flex-row input-group">
-                    <view class="flex-grow-0 flex-y-center input-group-label">客服电话{{entry_rules}}</view>
+                    <view class="flex-grow-0 flex-y-center input-group-label">客服电话</view>
                     <view class="flex-grow-1">
                         <input class="flex-y-center" name="service_tel" placeholder="必填" placeholderClass="placeholder" value="{{apply?apply.service_tel:''}}"></input>
                     </view>
-
                 </view>
             </view>
             <view class="flex flex-row" style="padding: 0 32rpx;margin-bottom: 32rpx" wx:if="{{entry_rules}}">
@@ -108,36 +107,22 @@
                 <button bindtap="showApplyResult" class="block-button view-data-btn" style="margin-top: 32rpx">查看审核结果
                 </button>
             </block>
-
-            <button class="submit-btn" formType="submit" style="margin-top: 0" wx:else>下一步</button>
+            <button class="submit-btn" formType="submit" style="margin-top: 0" wx:else>提交</button>
             <view style="text-align: center;padding: 24rpx">
                 <navigator openType="redirect" style="padding: 12rpx;color: #888" url="/pages/index/index">返回首页</navigator>
             </view>
         </form>
-        <view wx:if="{{apply}}">
-
-            <view class="flex flex-row"  style="padding: 0 32rpx;margin-bottom: 32rpx"  wx:if="{{apply.real_shop==0}}">
-
-                            <navigator url="/pages/order/order?status=99">
-                                <button class="submit-btn" style="margin-top: 0" >前往缴费</button>
-                            </navigator>
-             </view>
-
-
+        <view class="apply-result {{show_result?'show':''}}" wx:if="{{apply}}">
+            <image src="/mch/images/img-shenhe-0.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==0}}"></image>
+            <image src="/mch/images/img-shenhe-1.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==2}}"></image>
+            <image src="/mch/images/img-shenhe-2.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==1}}"></image>
+            <view class="review-status status-{{apply.review_status}}">{{apply.review_status_text}}</view>
+            <view class="review-result" wx:if="{{apply.review_status==0}}">您的信息已提交，请耐心等待审核。</view>
+            <view class="review-result" wx:else>{{apply.review_result}}</view>
+            <button bindtap="hideApplyResult" class="submit-btn" wx:if="{{apply.review_status==2}}">重新提交</button>
             <block wx:else>
-                <view class="apply-result {{show_result?'show':''}}">
-                    <image src="/mch/images/img-shenhe-0.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==0}}"></image>
-                    <image src="/mch/images/img-shenhe-1.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==2}}"></image>
-                    <image src="/mch/images/img-shenhe-2.png" style="width: 380rpx;height: 270rpx;margin-bottom: 72rpx" wx:if="{{apply.review_status==1}}"></image>
-                    <view class="review-status status-{{apply.review_status}}">{{apply.review_status_text}}</view>
-                    <view class="review-result" wx:if="{{apply.review_status==0}}">您的信息已提交，请耐心等待审核。</view>
-                    <view class="review-result" wx:else>{{apply.review_result}}</view>
-                    <button bindtap="hideApplyResult" class="submit-btn" wx:if="{{apply.review_status==2}}">重新提交</button>
-                    <block wx:else>
-                        <button bindtap="hideApplyResult" class="block-button view-data-btn" style="border:0rpx solid #ffffff" wx:if="{{apply.review_status==0||apply.review_status==1}}">查看提交内容
-                        </button>
-                    </block>
-                </view>
+                <button bindtap="hideApplyResult" class="block-button view-data-btn" style="border:0rpx solid #ffffff" wx:if="{{apply.review_status==0||apply.review_status==1}}">查看提交内容
+                </button>
             </block>
         </view>
         <view class="entry-rules" wx:if="{{show_entry_rules}}">
