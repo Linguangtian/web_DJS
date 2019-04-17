@@ -10,12 +10,18 @@
                 </view>
                 <view class="flex-grow-1 flex-y-center header-text">
                     <view>
-                        <view class="shop-name" style="width: 520rpx; margin-bottom: 4rpx;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{shop.name}}
+                        <view class="shop-name" style="width: 220rpx; margin-bottom: 4rpx;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{shop.name}}
                         </view>
                         <view style="font-size: 8pt">
                             <text style="margin-right: 30rpx">商品：{{shop.goods_num}}</text>
                             <text wx:if="{{__is_sales}}">已售：{{shop.sale_num}}</text>
                         </view>
+                    </view>
+                    <view  style="width: 300rpx;" >
+                        <image src="{{shop.sell}}" style="margin 0 auto;width: 62rpx;height: 62rpx;border-radius: 1rpx"></image>
+                        <image src="{{shop.stable}}" style="width: 62rpx;height: 62rpx;border-radius: 1rpx"></image>
+                        <image src="{{shop.safe}}" style="width: 62rpx;height: 62rpx;border-radius: 1rpx"></image>
+                        <image src="{{shop.original}}" style="width: 62rpx;height: 62rpx;border-radius: 1rpx"></image>
                     </view>
                     <view bindtap="kfuStart" style="text-align:center" wx:if="{{cs_icon}}">
                         <image src="/mch/images/shop-kf.png" style="width: 40rpx;height: 40rpx;"></image>

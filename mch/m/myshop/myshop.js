@@ -23,7 +23,10 @@ Page({
                     is_show: !0
                 })), 1 == t.code && getApp().core.redirectTo({
                     url: "/mch/apply/apply"
-                });
+                }), 2 == t.code && getApp().core.redirectTo({
+                    url: "/mch/apply/money"
+                })
+                ;
             }
         });
     },

@@ -272,7 +272,7 @@ var pay = {
                 });
             }
         };
-    }
+     }
 };
 
 module.exports = pay;

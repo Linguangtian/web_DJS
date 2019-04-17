@@ -9,6 +9,7 @@ Page({
         qrcode: ""
     },
     onLoad: function(t) {
+        console.info(11);
         getApp().page.onLoad(this, t);
         var e = this;
         is_loading = is_no_more = !1, p = 2, e.setData({
@@ -71,6 +72,7 @@ Page({
         }));
     },
     orderPay_1: function(e) {
+        console.info(12);
         var a = this, t = a.data.pay_type_list;
         1 == t.length ? (getApp().core.showLoading({
             title: "正在提交",
@@ -89,6 +91,7 @@ Page({
         });
     },
     WechatPay: function(t) {
+        console.info(32);
         getApp().request({
             url: getApp().api.order.pay_data,
             data: {
